@@ -64,18 +64,18 @@ check_credentials_vk <- function(prod = T, gcp_project, bq_dataset, bq_table = '
     )
 
     if(prod){
+      .q <- sprintf('select password, permission, company from %s.%s where user = "%s" and password = "%s"',
+                    bq_dataset, bq_table, user_, password_)
+      res <- bigrquery::bq_project_query(gcp_project, .q) %>%
+        bigrquery::bq_table_download()
+
+    } else{
+
       local_creds <- readr::read_csv('.secrets/credentials_temp.csv', show_col_types = FALSE)
 
       res <- local_creds %>%
         dplyr::filter(user == user_) %>%
         dplyr::filter(password == password_)
-
-    } else{
-
-      .q <- sprintf('select password, permission, company from %s.%s where user = "%s" and password = "%s"',
-                    bq_dataset, bq_table, user_, password_)
-      res <- bigrquery::bq_project_query(gcp_project, .q) %>%
-        bigrquery::bq_table_download()
 
     }
 
