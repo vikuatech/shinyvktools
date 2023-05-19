@@ -1,4 +1,4 @@
-#' secure_app_vk
+#' add_dockerfile_with_renv_custom
 #'
 #' @description Custom wrapper over golem::add_dockerfile_with_renv() that insludes .Renviron lines and .secrets in Dockerfile
 #'
@@ -7,7 +7,7 @@
 #'
 #' @return Creates or replace deploy/ folder with corresponding resources
 #'
-#' @noRd
+#' @export
 add_dockerfile_with_renv_custom <- function(gcp_project, ...){
 
   golem::add_dockerfile_with_renv(output_dir="deploy", from = "rocker/shiny-verse", open = F, ...)

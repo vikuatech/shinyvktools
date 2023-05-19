@@ -10,7 +10,7 @@
 #'
 #' @return invisible.
 #'
-#' @noRd
+#' @export
 secure_app_vk <- function(app_ui, prod = T, tags_vk){
 
   if(prod){
