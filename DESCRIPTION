@@ -19,7 +19,3 @@ Imports:
     stringr (>= 1.5.0),
     tibble (>= 3.2.1)
 RoxygenNote: 7.2.3
-Suggests: 
-    devtools (>= 2.4.5),
-    roxygen2 (>= 7.2.3),
-    usethis (>= 2.1.6)

@@ -41,7 +41,7 @@ secure_app_vk <- function(app_ui, prod = T, tags_vk){
 
 #' @export
 #' @rdname secure_app_vk
-check_credentials_vk <- function(prod = T, gcp_project, bq_dataset, bq_table){
+check_credentials_vk <- function(prod = T, gcp_project, bq_dataset, bq_table = 'credentials'){
 
   function(user, password){
     user_ <- user
@@ -72,7 +72,8 @@ check_credentials_vk <- function(prod = T, gcp_project, bq_dataset, bq_table){
 
     } else{
 
-      .q <- sprintf('select password, permission, company from la_wawa.credentials where user = "%s" and password = "%s"', user_, password_)
+      .q <- sprintf('select password, permission, company from %s.%s where user = "%s" and password = "%s"',
+                    bq_dataset, bq_table, user_, password_)
       res <- bigrquery::bq_project_query(gcp_project, .q) %>%
         bigrquery::bq_table_download()
 
