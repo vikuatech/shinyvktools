@@ -2,6 +2,12 @@
 
 export(add_dockerfile_with_renv_custom)
 export(check_credentials_vk)
+export(geocode_address)
+export(geocode_apply)
+export(geocode_google_safe)
+export(geocode_update)
 export(log_store_custom_vk)
 export(secure_app_vk)
 importFrom(magrittr,"%>%")
+importFrom(shiny,NS)
+importFrom(shiny,tagList)

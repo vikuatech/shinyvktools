@@ -8,7 +8,12 @@
 \usage{
 secure_app_vk(app_ui, prod = T, tags_vk)
 
-check_credentials_vk(prod = T, gcp_project, bq_dataset, bq_table)
+check_credentials_vk(
+  prod = T,
+  gcp_project,
+  bq_dataset,
+  bq_table = "credentials"
+)
 
 log_store_custom_vk(app_name, gcp_project, bq_dataset, bq_table, prod)
 }
