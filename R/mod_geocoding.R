@@ -8,6 +8,8 @@
 #' User can download the same fileInput .csv with new columns lat, lng and place_id
 #'
 #' @param id,input,output,session Internal parameters for {shiny}.
+#' @param example_dataset str. name of the .csv file to be read and display via DT::datatable
+#' @param package_name str. name of the shiny-package
 #'
 #' @noRd
 #'
@@ -70,7 +72,7 @@ mod_geocoding_ui <- function(id){
 #' geocoding Server Functions
 #'
 #' @noRd
-mod_geocoding_server <- function(id){
+mod_geocoding_server <- function(id, example_dataset, package_name){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
 
@@ -257,8 +259,8 @@ mod_geocoding_server <- function(id){
     mod_example_dataset_server(
       "example_geocode",
       example_text = example_text_str,
-      example_dataset = 'geocode_example.csv',
-      package = 'wawalytics'
+      example_dataset = example_dataset,
+      package = package_name
     )
 
   })
