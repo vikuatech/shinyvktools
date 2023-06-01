@@ -1,0 +1,47 @@
+---
+title: "geocoding"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{geocoding}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(shinyvktools)
+library(dplyr)
+```
+
+Set Google Maps API key via `googleway`
+
+```{r auth}
+googleway::set_key(key = Sys.getenv('GOOGLE_MAPS_API_KEY'))
+```
+
+`geocode_address` applies *googleway::google_geocode* to a dataframe safely to avoid stops by error responses
+
+```{r geocoded_address}
+tibble::tibble(
+  address = c('Caracas', '')
+) %>% geocode_address(address)
+```
+
+`geocoded_apply` checks for *row_id* column. This is useful for avoid duplicity coordinates (it always keeps the first one)
+
+```{r geocoded_apply}
+tibble::tibble(
+  address = c('Caracas', 'dsdf'),
+  lat = c(10, NA),
+  lng = c(0, NA)
+) %>%
+  tibble::rownames_to_column('row_id') %>% 
+  geocode_apply()
+```
+

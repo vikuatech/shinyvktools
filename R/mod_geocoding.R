@@ -247,7 +247,7 @@ mod_geocoding_server <- function(id, example_dataset, package_name){
       filename = function(){ name_download(input$upload_addresses$name, '-geocoded-') },
       content = function(file) {
         rvalues$addresses_geocoded %>%
-          dplyr::select(-response) %>%
+          dplyr::select(-tidyselect::any_of(c('response', 'coords'))) %>%
           readr::write_csv(file)
       })
 
@@ -260,7 +260,7 @@ mod_geocoding_server <- function(id, example_dataset, package_name){
       "example_geocode",
       example_text = example_text_str,
       example_dataset = example_dataset,
-      package = package_name
+      package_name = package_name
     )
 
   })

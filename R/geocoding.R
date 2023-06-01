@@ -21,8 +21,8 @@ geocode_address <- function(address_df, address_column){
       coords = purrr::map(response, ~.x$results$geometry$location),
       place_id = purrr::map(response, ~.x$results$place_id)
     ) %>%
-    tidyr::unnest(coords, keep_empty = T) %>%
-    tidyr::unnest(place_id, keep_empty = T) %>%
+    tidyr::unnest(coords, keep_empty = T, names_repair = tidyr::tidyr_legacy) %>%
+    tidyr::unnest(place_id, keep_empty = T, names_repair = tidyr::tidyr_legacy) %>%
     dplyr::mutate(place_id = as.character(place_id))
 
 }
