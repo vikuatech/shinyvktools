@@ -11,7 +11,7 @@
 #' @param example_dataset str. name of the .csv file to be read and display via DT::datatable
 #' @param package_name str. name of the shiny-package
 #'
-#' @noRd
+#' @export
 #'
 #' @importFrom shiny NS tagList
 mod_geocoding_ui <- function(id){
@@ -70,8 +70,8 @@ mod_geocoding_ui <- function(id){
 }
 
 #' geocoding Server Functions
-#'
-#' @noRd
+#' @export
+#' @rdname mod_geocoding_ui
 mod_geocoding_server <- function(id, example_dataset, package_name){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
