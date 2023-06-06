@@ -66,7 +66,7 @@ check_credentials_vk <- function(prod = T, gcp_project, bq_dataset, bq_table = '
 
     if(prod){
       parse_fields <- fields %>% paste0(collapse = ', ')
-      .q <- sprintf('select user%s from %s.%s where user = "%s" and password = "%s"',
+      .q <- sprintf('select user, %s from %s.%s where user = "%s" and password = "%s"',
                     parse_fields, bq_dataset, bq_table, user_, password_)
       res <- bigrquery::bq_project_query(gcp_project, .q) %>%
         bigrquery::bq_table_download()
