@@ -6,6 +6,7 @@
 #' @param prod boolean identifying if the app communicates with BQ to ask for credentials and save logs
 #' @param tags_vk named list with the top, bottom and img strings to include in login module
 #' @param gcp_project,bq_dataset,bq_table string names of GCP resources to retrieve and write
+#' @param fields string vector of fields to return from `bq_table`. These will be available in auth reactive
 #' @param app_name string to include in logs
 #'
 #' @return invisible.
@@ -41,7 +42,7 @@ secure_app_vk <- function(app_ui, prod = T, tags_vk){
 
 #' @export
 #' @rdname secure_app_vk
-check_credentials_vk <- function(prod = T, gcp_project, bq_dataset, bq_table = 'credentials'){
+check_credentials_vk <- function(prod = T, gcp_project, bq_dataset, bq_table = 'credentials', fields = c('permission', 'company')){
 
   function(user, password){
     user_ <- user
@@ -64,8 +65,9 @@ check_credentials_vk <- function(prod = T, gcp_project, bq_dataset, bq_table = '
     )
 
     if(prod){
-      .q <- sprintf('select password, permission, company from %s.%s where user = "%s" and password = "%s"',
-                    bq_dataset, bq_table, user_, password_)
+      parse_fields <- fields %>% paste0(collapse = ', ')
+      .q <- sprintf('select user%s from %s.%s where user = "%s" and password = "%s"',
+                    parse_fields, bq_dataset, bq_table, user_, password_)
       res <- bigrquery::bq_project_query(gcp_project, .q) %>%
         bigrquery::bq_table_download()
 
@@ -86,7 +88,7 @@ check_credentials_vk <- function(prod = T, gcp_project, bq_dataset, bq_table = '
     )
 
     if (nrow(res) > 0) {
-      list(result = TRUE, user_info = list(user = user, permission = res$permission, company = res$company))
+      list(result = TRUE, user_info = as.list(res))
     } else {
       list(result = FALSE)
     }
