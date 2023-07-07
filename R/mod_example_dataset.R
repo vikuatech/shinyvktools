@@ -35,12 +35,12 @@ mod_example_dataset_server <- function(id, example_text, example_dataset, packag
       input$example,
       {
 
-        example_dataset <- system.file('extdata', example_dataset, package = package_name) %>%
+        example_dataset_ <- system.file('extdata', example_dataset, package = package_name) %>%
           readr::read_csv(show_col_types = F)
 
         output$example_table <- DT::renderDataTable({
 
-          example_dataset %>%
+          example_dataset_ %>%
             head(10) %>%
             DT::datatable(
               rownames = F,
@@ -57,7 +57,7 @@ mod_example_dataset_server <- function(id, example_text, example_dataset, packag
         output$download_example <- downloadHandler(
           filename = example_dataset,
           content = function(file) {
-            example_dataset %>%
+            example_dataset_ %>%
               readr::write_csv(file)
           })
 
