@@ -20,19 +20,36 @@ secure_app_vk <- function(app_ui, prod = T, tags_vk){
       id = "auth",
       tags_top =
         tags$div(
-          tags$h3(tags_vk$top, style = "align:center"),
+          tags$style(HTML("
+               @import url('https://storage.googleapis.com/vikua-styles/logos/loginTwo.css');
+          ")
+          ),
           tags$img(
+            id="logo_vikua-fondo",
+            src = "https://storage.googleapis.com/vikua-styles/logos/background_blue_login.png",
+            alt = 'logo_vikua', width = '150'
+          ),
+          tags$img(
+            id="logo_vikua",
             src = tags_vk$img,
             alt = 'logo_vikua', width = '150'
+          ),
+          tags$img(
+            id="logo_vikua-white",
+            src = "https://storage.googleapis.com/vikua-styles/logos/logo_negative_vikua.png",
+            alt = 'logo_vikua', width = '150'
+          ),
+          tags$h3(tags_vk$top, style = "align:center", id="form-title"),
+          tags$h3("La vida, mejor", style = "align:center", id="title-one"),
+          tags$div(
+            id="title-two",
+            tags$h3("Toda tu data", style = "align:center", id="title-two-text"),
+            tags$h3("en un solo lugar", style = "align:center", id="title-two-text"),
           )
         ),
       tags_bottom = tagList(
         tags$div(id = "placeholder-loading"),
-        tags$div(
-          tags$p(tags_vk$bottom)
-        )
-      ),
-      background  = "linear-gradient(#272c30, #272c30);"
+      )
     )
   }
   else{
