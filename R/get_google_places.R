@@ -9,7 +9,7 @@
 #' name, place_id, types, vicinity, rating, user_ratings_total, lat, lng
 #' get_google_places_pagination returns a list with max 3 responses (Google Places API return max 3 resposes of 20 places each)
 #'
-#' @return invisible.
+#' @return get_google_places returns tibble. get_google_places_pagination returns response list
 #'
 #' @export
 get_google_places <- function(...){
@@ -33,7 +33,7 @@ error = function(e){
 }
 
 #' @export
-#' @rdname get_all_places
+#' @rdname get_google_places
 get_google_places_pagination <- function(...){
 
   places_list <- list()

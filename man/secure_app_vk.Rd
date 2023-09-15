@@ -12,7 +12,8 @@ check_credentials_vk(
   prod = T,
   gcp_project,
   bq_dataset,
-  bq_table = "credentials"
+  bq_table = "credentials",
+  fields = c("permission", "company")
 )
 
 log_store_custom_vk(app_name, gcp_project, bq_dataset, bq_table, prod)
@@ -25,6 +26,8 @@ log_store_custom_vk(app_name, gcp_project, bq_dataset, bq_table, prod)
 \item{tags_vk}{named list with the top, bottom and img strings to include in login module}
 
 \item{gcp_project, bq_dataset, bq_table}{string names of GCP resources to retrieve and write}
+
+\item{fields}{string vector of fields to return from `bq_table`. These will be available in auth reactive}
 
 \item{app_name}{string to include in logs}
 }
