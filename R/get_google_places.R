@@ -3,13 +3,15 @@
 #' @description Wrapper of googleway::get_places to paginate and get all possible results.
 #'
 #' @param ... parameters to pass to googleway::get_places
+#' @param places_list list of places returned by calling `get_google_places` in a map routine
 #'
 #' @details
-#' get_google_places cleans the response to get a tibble of places and attributes:
+#' `get_google_places` cleans the response to get a tibble of places and attributes:
 #' name, place_id, types, vicinity, rating, user_ratings_total, lat, lng
-#' get_google_places_pagination returns a list with max 3 responses (Google Places API return max 3 resposes of 20 places each)
+#' `get_google_places_pagination` returns a list with max 3 responses (Google Places API return max 3 resposes of 20 places each)
+#' `bind_places` is a cleaning wrapper to standarize responses of `get_google_places` into a tibble
 #'
-#' @return get_google_places returns tibble. get_google_places_pagination returns response list
+#' @return `get_google_places` returns tibble. `get_google_places_pagination` returns response list. `bind_places` returns a tibble
 #'
 #' @export
 get_google_places <- function(...){
@@ -64,3 +66,16 @@ get_google_places_pagination <- function(...){
   return(places_list)
 }
 
+#' @export
+#' @rdname get_google_places
+bind_places <- function(places_list){
+  places_list %>%
+    purrr::discard(is.na) %>%
+    purrr::map(dplyr::bind_rows) %>%
+    dplyr::bind_rows() %>%
+    dplyr::distinct(place_id, .keep_all = T) %>%
+    dplyr::rowwise() %>%
+    dplyr::mutate(types = jsonlite::toJSON(types)) %>%
+    dplyr::ungroup() %>%
+    sf::st_as_sf(coords = c('lng', 'lat'), crs = sf::st_crs(4326))
+}

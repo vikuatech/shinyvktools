@@ -4,7 +4,10 @@
 #'
 #' @param query SQL query to execute
 #' @param dataset str name of the dataset that will perform the job
-#' @param location str name of the wkt column to convert to sf
+#' @param location str name of the wkt column to convert to sf. When bq_post the column is a geometry in a `data`_sf object and it will be converted to wkt
+#' @param data df to upload. In `sf_to_wk` data must be a sf object
+#' @param project str name of the project that will perform the job
+#' @param table str name of the table that will perform the job
 #'
 #' @return invisible.
 #'
@@ -28,4 +31,36 @@ bq_get <- function(query, dataset = NULL, location = NULL){
   }
 
   return(ret)
+}
+
+#' @export
+#' @rdname bq_get
+sf_to_wk <- function(data, location = geometry){
+  data %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(
+      "{{location}}" := sf::st_as_text({{location}}) %>% wk::wkt()
+    )
+}
+
+#' @export
+#' @rdname bq_get
+bq_post <- function(data, project, dataset, table,
+                    create_disposition = 'CREATE_IF_NEEDED',
+                    write_disposition = 'WRITE_TRUNCATE',
+                    quiet = F){
+
+  bigrquery::bq_table(
+    project = project,
+    dataset = dataset,
+    table = table
+  ) %>%
+    bigrquery::bq_table_upload(
+      values = data,
+      create_disposition = create_disposition,
+      write_disposition = write_disposition,
+      quiet = quiet,
+      fields = bigrquery::as_bq_fields(data)
+    )
+
 }
