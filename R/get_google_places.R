@@ -20,10 +20,10 @@ tryCatch({
   })
 
   places_list %>%
-    bind_rows() %>%
+    dplyr::bind_rows() %>%
     tidyr::unnest(geometry) %>%
     tidyr::unnest(location) %>%
-    select(name, place_id, types, vicinity, rating, user_ratings_total, lat, lng)
+    dplyr::select(name, place_id, types, vicinity, rating, user_ratings_total, lat, lng)
 
 },
 error = function(e){
@@ -41,10 +41,10 @@ get_google_places_pagination <- function(...){
   while (TRUE) {
 
     tryCatch({
-      response <- google_places(..., page_token = page_token)
+      response <- googleway::google_places(..., page_token = page_token)
     },
     error = function(e){
-      response <- google_places(..., page_token = page_token)
+      response <- googleway::google_places(..., page_token = page_token)
     })
 
 
