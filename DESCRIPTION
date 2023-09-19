@@ -13,6 +13,7 @@ Imports:
     assertr (>= 3.0.0),
     bigrquery (>= 1.4.2),
     bs4Dash (>= 2.2.1),
+    dockerfiler (>= 0.2.1),
     dplyr (>= 1.1.2),
     DT (>= 0.28),
     golem (>= 0.4.0),
