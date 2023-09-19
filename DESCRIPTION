@@ -21,6 +21,7 @@ Imports:
     leaflet (>= 2.1.2),
     purrr (>= 1.0.1),
     readr (>= 2.1.4),
+    sf (>= 1.0.14),
     shinyjs (>= 2.1.0),
     shinylogs (>= 0.2.1),
     shinymanager (>= 1.0.410),

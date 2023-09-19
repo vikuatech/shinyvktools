@@ -43,6 +43,17 @@
       ],
       "Hash": "ab745834dfae7eaf71dd0b90f3b66759"
     },
+    "KernSmooth": {
+      "Package": "KernSmooth",
+      "Version": "2.23-21",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "stats"
+      ],
+      "Hash": "6314fc110e09548ba889491db6ae67fb"
+    },
     "MASS": {
       "Package": "MASS",
       "Version": "7.3-60",
@@ -399,6 +410,35 @@
       ],
       "Hash": "9b2191ede20fa29828139b9900922e51"
     },
+    "class": {
+      "Package": "class",
+      "Version": "7.3-22",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "MASS",
+        "R",
+        "stats",
+        "utils"
+      ],
+      "Hash": "f91f6b29f38b8c280f2b9477787d4bb2"
+    },
+    "classInt": {
+      "Package": "classInt",
+      "Version": "0.4-10",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "KernSmooth",
+        "R",
+        "class",
+        "e1071",
+        "grDevices",
+        "graphics",
+        "stats"
+      ],
+      "Hash": "f5a40793b1ae463a7ffb3902a95bf864"
+    },
     "cli": {
       "Package": "cli",
       "Version": "3.6.1",
@@ -587,6 +627,22 @@
         "vctrs"
       ],
       "Hash": "dea6970ff715ca541c387de363ff405e"
+    },
+    "e1071": {
+      "Package": "e1071",
+      "Version": "1.7-13",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "class",
+        "grDevices",
+        "graphics",
+        "methods",
+        "proxy",
+        "stats",
+        "utils"
+      ],
+      "Hash": "1046cb48d06cb40c2900d8878f03a0fe"
     },
     "ellipsis": {
       "Package": "ellipsis",
@@ -1384,6 +1440,18 @@
       ],
       "Hash": "4ab2c43adb4d4699cf3690acd378d75d"
     },
+    "proxy": {
+      "Package": "proxy",
+      "Version": "0.4-27",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+        "stats",
+        "utils"
+      ],
+      "Hash": "e0ef355c12942cf7a6b91a6cfaea8b3e"
+    },
     "ps": {
       "Package": "ps",
       "Version": "1.7.5",
@@ -1540,6 +1608,18 @@
       "Repository": "CRAN",
       "Hash": "690bd2acc42a9166ce34845884459320"
     },
+    "s2": {
+      "Package": "s2",
+      "Version": "1.1.4",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+        "Rcpp",
+        "wk"
+      ],
+      "Hash": "f1cbe03bb3346f8e817518ffa20f9f5a"
+    },
     "sass": {
       "Package": "sass",
       "Version": "0.4.6",
@@ -1582,6 +1662,29 @@
         "Rcpp"
       ],
       "Hash": "5669c376aea6546ff938528588101b7a"
+    },
+    "sf": {
+      "Package": "sf",
+      "Version": "1.0-14",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "DBI",
+        "R",
+        "Rcpp",
+        "classInt",
+        "grDevices",
+        "graphics",
+        "grid",
+        "magrittr",
+        "methods",
+        "s2",
+        "stats",
+        "tools",
+        "units",
+        "utils"
+      ],
+      "Hash": "e2111252a76984ca50bf8d6314348681"
     },
     "shiny": {
       "Package": "shiny",
@@ -1839,6 +1942,17 @@
       ],
       "Hash": "f561504ec2897f4d46f0c7657e488ae1"
     },
+    "units": {
+      "Package": "units",
+      "Version": "0.8-4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "Rcpp"
+      ],
+      "Hash": "e0fbcea25008a7540c83c2c294135de0"
+    },
     "usethis": {
       "Package": "usethis",
       "Version": "2.1.6",
@@ -1974,6 +2088,16 @@
         "stats"
       ],
       "Hash": "c0e49a9760983e81e55cdd9be92e7182"
+    },
+    "wk": {
+      "Package": "wk",
+      "Version": "0.8.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "aaf7e20556e3125a09d53453814ad339"
     },
     "xfun": {
       "Package": "xfun",
