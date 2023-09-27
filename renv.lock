@@ -2044,9 +2044,9 @@
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteRepo": "vktools",
       "RemoteUsername": "vikuatech",
-      "RemoteRef": "HEAD",
+      "RemoteRepo": "vktools",
+      "RemoteRef": "main",
       "RemoteSha": "6d718c58f83245cae09dc072a5560716cdce5319",
       "Requirements": [
         "bigrquery",
@@ -2057,7 +2057,7 @@
         "tibble",
         "tidyr"
       ],
-      "Hash": "b4b298151bab8b75da46a9e651c8f616"
+      "Hash": "4dd09f8606f1ca6d5d6e2c1c8599329c"
     },
     "vroom": {
       "Package": "vroom",
