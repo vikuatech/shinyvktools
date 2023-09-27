@@ -134,7 +134,7 @@ mod_geocoding_server <- function(id, example_dataset, package_name){
         html = waiter::spin_double_bounce() # use a spinner
       )
 
-      rvalues$addresses_geocoded <- geocode_apply(rvalues$addresses)
+      rvalues$addresses_geocoded <- vktools::geocode_apply(rvalues$addresses)
 
       shinyjs::show('download_addresses_bttn')
       shinyjs::show('download_addresses_bttn_bttn')
@@ -170,7 +170,7 @@ mod_geocoding_server <- function(id, example_dataset, package_name){
       dragged_marker <- input$address_map_marker_dragend
       cat('Dragged stop', dragged_marker$id, '\n')
 
-      rvalues$addresses_geocoded <- geocode_update(
+      rvalues$addresses_geocoded <- vktools::geocode_update(
         rvalues$addresses_geocoded,
         id = dragged_marker$id,
         lat = dragged_marker$lat,

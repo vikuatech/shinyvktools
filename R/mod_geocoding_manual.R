@@ -137,7 +137,7 @@ mod_geocoding_manual_server <- function(id, geocode_rvalues, selected_address){
         return(NULL)
       }
 
-      missin_geocode <- geocode_google_safe(missing_manual_address_text)
+      missin_geocode <- vktools::geocode_google_safe(missing_manual_address_text)
       lat_ <- missin_geocode$results$geometry$location$lat
       lng_ <- missin_geocode$results$geometry$location$lng
 
@@ -171,7 +171,7 @@ mod_geocoding_manual_server <- function(id, geocode_rvalues, selected_address){
 
       cat('Reactive Save bttn \n')
 
-      geocode_rvalues$addresses_geocoded <- geocode_update(
+      geocode_rvalues$addresses_geocoded <- vktools::geocode_update(
         geocode_rvalues$addresses_geocoded,
         id = selected_row_id,
         lat = rvalues_manualgeo$coords$lat,

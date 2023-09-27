@@ -27,15 +27,16 @@ googleway::set_key(key = Sys.getenv('GOOGLE_MAPS_API_KEY'))
 
 `geocode_address` applies *googleway::google_geocode* to a dataframe safely to avoid stops by error responses
 
-```{r geocoded_address}
+```{r geocoded_address, eval=F}
 tibble::tibble(
   address = c('Caracas', '')
-) %>% geocode_address(address)
+) %>% 
+  geocode_address(address)
 ```
 
 `geocoded_apply` checks for *row_id* column. This is useful for avoid duplicity coordinates (it always keeps the first one)
 
-```{r geocoded_apply}
+```{r geocoded_apply, eval = F}
 tibble::tibble(
   address = c('Caracas', 'dsdf'),
   lat = c(10, NA),
