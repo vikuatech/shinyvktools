@@ -10,21 +10,21 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    assertr (>= 3.0.0),
-    bs4Dash (>= 2.2.1),
-    dockerfiler (>= 0.2.1),
-    DT (>= 0.28),
-    golem (>= 0.4.0),
-    leaflet (>= 2.1.2),
-    magrittr (>= 2.0.3),
-    purrr (>= 1.0.1),
-    readr (>= 2.1.4),
-    shiny (>= 1.7.4),
-    shinyjs (>= 2.1.0),
-    shinylogs (>= 0.2.1),
-    shinymanager (>= 1.0.410),
-    shinyWidgets (>= 0.7.6),
-    stringr (>= 1.5.0),
+    assertr,
+    bs4Dash,
+    dockerfiler,
+    DT,
+    golem,
+    leaflet,
+    magrittr,
+    purrr,
+    readr,
+    shiny,
+    shinyjs,
+    shinylogs,
+    shinymanager,
+    shinyWidgets,
+    stringr,
     vktools (>= 0.0.0.9)
 RoxygenNote: 7.2.3
 Suggests: 
