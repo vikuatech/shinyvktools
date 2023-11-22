@@ -11,7 +11,7 @@
 #' @param ... output to show in column
 #' @param output_vector output of shinyWidget::AirDatePicker
 #'
-#' @noRd
+#' @export
 name_download <- function(file_name, module_name) {
   file_ext <- stringr::str_remove(file_name, '.csv')
   print(file_ext)
@@ -23,6 +23,8 @@ name_download <- function(file_name, module_name) {
   )
 }
 
+#' @export
+#' @rdname name_download
 column_card <- function(width, title, ...){
   bs4Dash::column(
     width,
@@ -31,6 +33,8 @@ column_card <- function(width, title, ...){
   )
 }
 
+#' @export
+#' @rdname name_download
 column_card_button <- function(width, title, button, ...){
   bs4Dash::column(
     width,
@@ -42,6 +46,8 @@ column_card_button <- function(width, title, button, ...){
   )
 }
 
+#' @export
+#' @rdname name_download
 expand_air_month_picker_output <- function(output_vector){
   if(length(output_vector) == 1){
     position_ <- 1
