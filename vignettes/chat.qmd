@@ -7,9 +7,9 @@ Vikua Idiomatic Chat
 
 ```{r}
 library(shiny)
-ui <- mod_chat_ui('chat')
+ui <- shinyvktools::mod_chat_ui('chat')
 server <- shinyServer(function(input, output, session) {
-  mod_chat_server(
+  shinyvktools::mod_chat_server(
     'chat',
     user_id = 'user_id', 
     assistant_id = Sys.getenv('ASST_TAX_EXPERT'), 
