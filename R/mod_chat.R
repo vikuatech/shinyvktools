@@ -1,12 +1,13 @@
 #' chat UI Function
 #'
-#' @description A shiny Module.
+#' @description Idiomatic conversation with VikuaBot (OpenAI assistants)
 #'
 #' @param id,input,output,session Internal parameters for {shiny}.
 #' @param user_id Vikua User ID to log the conversation
 #' @param assistant_id OpenAI assistant ID to use in the conversation
+#' @param project,dataset path to the project and dataset in BigQuery
 #'
-#' @noRd
+#' @export
 #'
 #' @importFrom shiny NS tagList
 mod_chat_ui <- function(id, height = '600px'){
@@ -71,8 +72,8 @@ mod_chat_ui <- function(id, height = '600px'){
 }
 
 #' chat Server Functions
-#'
-#' @noRd
+#' @export
+#' @rdname mod_chat_ui
 mod_chat_server <- function(id, user_id, assistant_id, project, dataset){
 
   # Only for Development
