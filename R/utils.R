@@ -61,3 +61,18 @@ expand_air_month_picker_output <- function(output_vector){
   return(c(left_selected, right_selected))
 
 }
+
+#' @export
+#' @rdname name_download
+compile_chat <- function(i, data){
+
+  role <- data[i, "source"]
+  message <- data[i, "message"]
+
+  role_message <- glue::glue("<b>{role}:</b> {markdown(message)}" )
+
+  tags$div(
+    class = ifelse(role == "User", "alert alert-secondary", "alert alert-success"),
+    HTML(role_message)
+  )
+}
