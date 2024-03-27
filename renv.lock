@@ -2029,14 +2029,14 @@
     },
     "vkchat": {
       "Package": "vkchat",
-      "Version": "0.0.0.9000",
+      "Version": "0.0.1",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "vikuatech",
       "RemoteRepo": "vkchat",
       "RemoteRef": "main",
-      "RemoteSha": "9c8a0e3e32890c2ca96b8cea241a3deb92d13ba3",
+      "RemoteSha": "7d4864329308372b849c737cf87ff981df508f57",
       "Requirements": [
         "bigrquery",
         "dplyr",
@@ -2047,7 +2047,7 @@
         "stringr",
         "tidyr"
       ],
-      "Hash": "9f00ec06bbbc21680e8977f15bb5c682"
+      "Hash": "b99fc51a264251995da491836cd3d2f7"
     },
     "vktools": {
       "Package": "vktools",
