@@ -25,6 +25,7 @@ Imports:
     shinymanager,
     shinyWidgets,
     stringr,
+    vkchat,
     vktools
 RoxygenNote: 7.2.3
 Suggests: 
