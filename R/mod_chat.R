@@ -93,7 +93,7 @@ mod_chat_server <- function(id, user_id, assistant_id, project, dataset){
     rv <- reactiveValues(
       chat_data = { data.frame(source = 'VikuaBot', message = 'Hola! En que puedo ayudarte?') },
       thread_id = {
-        thread <- vkchat::create_thread_openai(openai_key)
+        thread <- vkchat::create_thread(openai_key)
         thread %>% purrr::pluck('id')
 
         # Sys.getenv("DEV_THREAD_TAX_EXPERT")
