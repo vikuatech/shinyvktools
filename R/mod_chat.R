@@ -74,7 +74,7 @@ mod_chat_ui <- function(id, height = '600px'){
 #' chat Server Functions
 #' @export
 #' @rdname mod_chat_ui
-mod_chat_server <- function(id, user_id, assistant_id, project, dataset, prod = T){
+mod_chat_server <- function(id, user_id, assistant_id, project, dataset){
 
   openai_key <- Sys.getenv("OPENAI_API_KEY")
 
