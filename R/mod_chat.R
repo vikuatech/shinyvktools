@@ -74,11 +74,12 @@ mod_chat_ui <- function(id, height = '600px'){
 #' chat Server Functions
 #' @export
 #' @rdname mod_chat_ui
-mod_chat_server <- function(id, user_id, assistant_id, project, dataset){
+mod_chat_server <- function(id, user_id, assistant_id, project, dataset, prod = T){
 
-  # Only for Development
-  bigrquery::bq_auth(path = ".secrets/tributo-app-manager_sat.json")
-  openai_key <- Sys.getenv("OPENAI_API_KEY")
+  if(!prod){
+    # Only for Development
+    openai_key <- Sys.getenv("OPENAI_API_KEY")
+  }
 
   moduleServer( id, function(input, output, session){
     ns <- session$ns

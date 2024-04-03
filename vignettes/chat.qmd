@@ -7,14 +7,17 @@ Vikua Idiomatic Chat
 
 ```{r}
 library(shiny)
+bigrquery::bq_auth(path = ".secrets/tributo-app-manager_sat.json")
+devtools::load_all()
 ui <- shinyvktools::mod_chat_ui('chat')
 server <- shinyServer(function(input, output, session) {
   shinyvktools::mod_chat_server(
     'chat',
-    user_id = 'user_id', 
+    user_id = 'dev', 
     assistant_id = Sys.getenv('ASST_TAX_EXPERT'), 
     project = 'tributo-1', 
-    dataset = 'prod_francisco_de_miranda'
+    dataset = 'prod_francisco_de_miranda',
+    prod = F
   )
 })
 shinyApp(ui, server)
