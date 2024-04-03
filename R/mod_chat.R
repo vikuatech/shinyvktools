@@ -76,10 +76,7 @@ mod_chat_ui <- function(id, height = '600px'){
 #' @rdname mod_chat_ui
 mod_chat_server <- function(id, user_id, assistant_id, project, dataset, prod = T){
 
-  if(!prod){
-    # Only for Development
-    openai_key <- Sys.getenv("OPENAI_API_KEY")
-  }
+  openai_key <- Sys.getenv("OPENAI_API_KEY")
 
   moduleServer( id, function(input, output, session){
     ns <- session$ns
