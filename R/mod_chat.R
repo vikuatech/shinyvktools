@@ -89,10 +89,15 @@ mod_chat_server <- function(id, user_id, assistant_id, project, dataset){
 
     # Initialize Thread ID and dataframe store object
     rv <- reactiveValues(
-      chat_data = { data.frame(source = 'VikuaBot', message = 'Hola! En que puedo ayudarte?') },
+      chat_data = {
+        df <- data.frame(source = 'VikuaBot', message = 'Hola! En que puedo ayudarte?')
+        print(df)
+        df
+      },
       thread_id = {
         thread <- vkchat::create_thread(openai_key)
-        thread %>% purrr::pluck('id')
+        thread_id <- thread %>% purrr::pluck('id')
+        thread_id
 
         # Sys.getenv("DEV_THREAD_TAX_EXPERT")
       }
@@ -107,8 +112,8 @@ mod_chat_server <- function(id, user_id, assistant_id, project, dataset){
         created_at = Sys.time()
       )
 
-      chat_config %>%
-        vktools::bq_post('reporting-338116', 'vikua_platform', 'chat_config', write_disposition = 'WRITE_APPEND')
+      # chat_config %>%
+      #   vktools::bq_post('reporting-338116', 'vikua_platform', 'chat_config', write_disposition = 'WRITE_APPEND')
 
     })
 
