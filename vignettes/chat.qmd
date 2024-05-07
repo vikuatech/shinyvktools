@@ -16,8 +16,7 @@ server <- shinyServer(function(input, output, session) {
     user_id = 'dev', 
     assistant_id = Sys.getenv('ASST_TAX_EXPERT'), 
     project = 'tributo-1', 
-    dataset = 'prod_francisco_de_miranda',
-    prod = F
+    dataset = 'prod_francisco_de_miranda'
   )
 })
 shinyApp(ui, server)
