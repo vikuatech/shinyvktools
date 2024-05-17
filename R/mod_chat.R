@@ -112,8 +112,8 @@ mod_chat_server <- function(id, user_id, assistant_id, project, dataset){
         created_at = Sys.time()
       )
 
-      # chat_config %>%
-      #   vktools::bq_post('reporting-338116', 'vikua_platform', 'chat_config', write_disposition = 'WRITE_APPEND')
+      chat_config %>%
+        vktools::bq_post('reporting-338116', 'vikua_platform', 'chat_config', write_disposition = 'WRITE_APPEND')
 
     })
 
