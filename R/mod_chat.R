@@ -91,13 +91,12 @@ mod_chat_server <- function(id, user_id, assistant_id, project, dataset){
     rv <- reactiveValues(
       chat_data = {
         df <- data.frame(source = 'VikuaBot', message = 'Hola! En que puedo ayudarte?')
-        print(df)
-        df
+        return(df)
       },
       thread_id = {
         thread <- vkchat::create_thread(openai_key)
         thread_id <- thread %>% purrr::pluck('id')
-        thread_id
+        return(thread_id)
 
         # Sys.getenv("DEV_THREAD_TAX_EXPERT")
       }
@@ -112,8 +111,8 @@ mod_chat_server <- function(id, user_id, assistant_id, project, dataset){
         created_at = Sys.time()
       )
 
-      # chat_config %>%
-      #   vktools::bq_post('reporting-338116', 'vikua_platform', 'chat_config', write_disposition = 'WRITE_APPEND')
+      chat_config %>%
+        vktools::bq_post('reporting-338116', 'vikua_platform', 'chat_config', write_disposition = 'WRITE_APPEND')
 
     })
 
@@ -146,6 +145,8 @@ mod_chat_server <- function(id, user_id, assistant_id, project, dataset){
           vkchat::clean_response()
 
         if(!is.null(assistant_response)) {
+          cat('Assistant response: Success \n')
+          cat(assistant_response, '\n')
           gpt_data <- data.frame(source = "VikuaBot", message = assistant_response)
           rv$chat_data <- rbind(rv$chat_data, gpt_data)
         }

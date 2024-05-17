@@ -1,7 +1,7 @@
 Package: shinyvktools
 Type: Package
 Title: Utils for Vikua Shinyapps
-Version: 0.1.10
+Version: 0.1.11
 Authors@R: person('Rodrigo', 'Serrano', email = 'roserrano@vikua.com', role = c('cre', 'aut'))
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: Vikua is a urban-tech latam startup focused on provide urban-oriented analytic solutions 
