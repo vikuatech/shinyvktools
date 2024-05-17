@@ -112,8 +112,8 @@ mod_chat_server <- function(id, user_id, assistant_id, project, dataset){
         created_at = Sys.time()
       )
 
-      chat_config %>%
-        vktools::bq_post('reporting-338116', 'vikua_platform', 'chat_config', write_disposition = 'WRITE_APPEND')
+      # chat_config %>%
+      #   vktools::bq_post('reporting-338116', 'vikua_platform', 'chat_config', write_disposition = 'WRITE_APPEND')
 
     })
 
@@ -147,6 +147,11 @@ mod_chat_server <- function(id, user_id, assistant_id, project, dataset){
 
         if(!is.null(assistant_response)) {
           gpt_data <- data.frame(source = "VikuaBot", message = assistant_response)
+          rv$chat_data <- rbind(rv$chat_data, gpt_data)
+        }
+        else{
+          cat('Assistant response: NULL \n')
+          gpt_data <- data.frame(source = "VikuaBot", message = 'No pude procesar la solicitud, pero le avise al equipo de Tech de Vikua para que te de respuesta lo más pronto posible.')
           rv$chat_data <- rbind(rv$chat_data, gpt_data)
         }
 
