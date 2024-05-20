@@ -90,13 +90,16 @@ mod_chat_server <- function(id, user_id, assistant_id, project, dataset){
     # Initialize Thread ID and dataframe store object
     rv <- reactiveValues(
       chat_data = {
+        cat('Init chat with key: ', stringr::str_sub(openai_key, start = -3L, end = -1L), '\n')
         df <- data.frame(source = 'VikuaBot', message = 'Hola! En que puedo ayudarte?')
-        return(df)
+        df
       },
       thread_id = {
+        cat('Creating chatconfig log  with thread_id: ')
         thread <- vkchat::create_thread(openai_key)
         thread_id <- thread %>% purrr::pluck('id')
-        return(thread_id)
+        cat(thread_id, ' /n')
+        thread_id
 
         # Sys.getenv("DEV_THREAD_TAX_EXPERT")
       }
@@ -104,6 +107,8 @@ mod_chat_server <- function(id, user_id, assistant_id, project, dataset){
 
     # Log Chat Config in BQ
     observeEvent(rv$thread_id, {
+
+      cat('Logging chat config in BQ \n')
       chat_config <- tibble::tibble(
         assistant_id = assistant_id,
         user_id = user_id,
