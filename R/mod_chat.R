@@ -37,7 +37,7 @@ mod_chat_ui <- function(id, height = '600px'){
           id="mensajes",
 
           div(
-            style='height:800px;overflow-y: scroll;',
+            style = "height: calc(100vh - 150px); overflow-y: auto;",
             uiOutput(ns("chat_history"))
           )
         )
